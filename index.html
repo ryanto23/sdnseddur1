@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDN Seddur 1 - Cerdas & Berkarakter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --secondary: #ffc107;
+            --dark: #222;
+            --light: #f8f9fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
+
+        /* Header Logo Section */
+        .main-header {
+            display: flex; align-items: center; justify-content: space-between; 
+            padding: 10px 10%; background: white; border-bottom: 2px solid var(--primary);
+        }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-container img { height: 50px; width: auto; }
+        .logo-text h1 { margin: 0; font-size: 18px; color: var(--primary); font-weight: bold; }
+        .logo-text p { margin: 0; font-size: 11px; color: #666; }
+
+        /* Navigation & Dropdown */
+        nav { 
+            background: rgba(46, 125, 50, 0.95); position: sticky; top: 0; 
+            z-index: 9999; backdrop-filter: blur(5px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        nav ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; }
+        nav ul li { position: relative; }
+        nav ul li a { display: block; padding: 15px 20px; color: white; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; }
+        nav ul li a:hover { background: rgba(255,255,255,0.1); }
+
+        .dropdown-menu {
+            display: none; position: absolute; top: 100%; left: 0; 
+            background: white; min-width: 200px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+            list-style: none; border-radius: 0 0 5px 5px;
+        }
+        nav ul li:hover .dropdown-menu { display: block; }
+        .dropdown-menu li a { color: #333 !important; padding: 12px 15px; border-bottom: 1px solid #f0f0f0; }
+        .dropdown-menu li a:hover { background: #f9f9f9; color: var(--primary) !important; }
+
+        /* Hero Slider */
+        .hero-slider {
+            height: 80vh; position: relative; overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+            text-align: center; color: white;
+        }
+        .slides { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; transition: opacity 1.5s ease-in-out;
+        }
+        .slide.active { opacity: 1; }
+        .hero-content { position: relative; z-index: 2; padding: 0 20px; }
+        .hero-content h1 { font-size: 3.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin: 15px 0; }
+        .hero-content p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; }
+
+        /* Sections */
+        .container { padding: 60px 10%; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 10px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { 
+            background: white; padding: 30px; border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-bottom: 5px solid var(--primary);
+            transition: 0.3s; text-align: center;
+        }
+        .card:hover { transform: translateY(-10px); }
+        .card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; }
+
+        /* Button Style */
+        .btn { 
+            background: var(--secondary); color: var(--dark); padding: 12px 30px; 
+            border-radius: 30px; text-decoration: none; font-weight: bold; 
+            border: none; cursor: pointer; transition: 0.3s; display: inline-block;
+        }
+        .btn:hover { background: #e0a800; transform: scale(1.05); }
+
+        /* Modal & Floating Sections */
+        #sambutanSection, #guruSection { display: none; }
+
+        footer { background: var(--dark); color: white; padding: 50px 10% 20px; text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: left; margin-bottom: 30px; }
+        
+        .social-icons { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
+        .social-icons a { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 20px; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="https://i.imghippo.com/files/yN4997gXM.jpg" alt="Logo">
+            <img src="https://i.imghippo.com/files/Lou7480OI.jpg" alt="Logo Sekolah">
+            <div class="logo-text">
+                <h1>SDN SEDDUR 1</h1>
+                <p>Kec. Pakong, Kab. Pamekasan</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="#">BERANDA ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:void(0)" onclick="bukaSambutan()">🎤 Sambutan Kepsek</a></li>
+                    <li><a href="javascript:void(0)" onclick="bukaTenagaPendidik()">👩‍🏫 Tenaga Pendidik</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">PROFIL ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:void(0)" onclick="munculInfo('visi')">Visi & Misi</a></li>
+                    <li><a href="javascript:void(0)" onclick="munculInfo('sarana')">Sarana Prasarana</a></li>
+                </ul>
+            </li>
+            <li><a href="#akademik">AKADEMIK</a></li>
+            <li><a href="#kontak">KONTAK</a></li>
+            <li><a href="#pengaduan">PENGADUAN</a></li>
+        </ul>
+    </nav>
+
+    <section id="sambutanSection" style="padding: 40px 10%; background: #f4f4f4; border-bottom: 4px solid var(--primary);">
+        <div style="max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 15px; position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+            <button onclick="tutupSambutan()" style="position: absolute; right: 15px; top: 15px; background: #c0392b; color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer;">Tutup X</button>
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start;">
+                <img src="https://i.imghippo.com/files/IWD2565ypM.jpeg" style="width: 150px; border-radius: 15px; border: 4px solid var(--primary);">
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 style="color: var(--primary); margin-bottom: 15px;">Sambutan Kepala Sekolah</h2>
+                    <p style="font-style: italic; white-space: pre-line; font-size: 14px;">Assalamu’alaikum Warahmatullahi Wabarakatuh,
+                    Selamat datang di website resmi SDN Seddur 1. 
+                    Puji syukur kami panjatkan ke hadirat Allah SWT, sehingga platform digital ini dapat hadir sebagai jendela informasi bagi masyarakat, orang tua, dan siswa untuk mengenal lebih dekat sekolah kami.
+			Kami berkomitmen untuk mencetak generasi yang tidak hanya unggul secara intelektual (Cerdas), namun juga memiliki pondasi akhlak yang kuat (Berkarakter). Melalui sinergi antara guru, orang tua, dan teknologi, kami optimis SDN Seddur 1 akan terus menjadi tempat belajar yang inspiratif dan berwawasan lingkungan.
+
+			Wassalamu’alaikum Warahmatullahi Wabarakatuh.
+
+			Kepala Sekolah SDN Seddur 1.</p>
+                    <p style="font-weight: bold; margin-top: 15px;"> Mas'udi, S.Pd.SD</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guruSection" style="background: #f9f9f9; padding: 60px 10%;">
+        <div style="text-align: right; margin-bottom: 20px;">
+            <button onclick="tutupGuru()" class="btn" style="background: #c0392b; color: white;">Tutup Galeri X</button>
+        </div>
+        <div class="section-title">
+            <h2>Tenaga Pendidik & Kependidikan</h2>
+        </div>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+            <div class="card">
+                <img src="https://i.imghippo.com/files/IWD2565ypM.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--secondary);">
+                <h4>Mas'udi, S.Pd.SD</h4>
+                <p style="font-size: 12px; color: #777;">Kepala Sekolah</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/Xfc1238CuU.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--primary);">
+                <h4>Ainor Rahman, S.Ag</h4>
+                <p style="font-size: 12px; color: #777;">Operator Sekolah</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/HsQD2800fI.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Fathol Bari, SPd.I</h4>
+                <p style="font-size: 12px; color: #777;">Guru Agama</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/zxXa1203wM.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Zaituni, A.Ma.Pd</h4>
+                <p style="font-size: 12px; color: #777;">Guru BHS Madura</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/HCC5891ATk.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Rokayyah, S.Pd.I</h4>
+                <p style="font-size: 12px; color: #777;">Guru Kesenian</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/ZeO6325xQ.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Alfan Nur Rahman</h4>
+                <p style="font-size: 12px; color: #777;">Penjaga Sekolah</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/pRMY9170HSQ.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Ulya Rohmatina</h4>
+                <p style="font-size: 12px; color: #777;">Guru PJOK</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/BDpv9616LY.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Yulistina F, S.Pd</h4>
+                <p style="font-size: 12px; color: #777;">Guru Kelas 1</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/Eb3655VDs.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Rofiqi, S.Pd</h4>
+                <p style="font-size: 12px; color: #777;">Guru Kelas 2</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/vYVn4520daA.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Ita Febrianti, S.Pd</h4>
+                <p style="font-size: 12px; color: #777;">Guru Kelas 3</p>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/r2WXMysH/1741311904762.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Rusdiyanto, S.Pd</h4>
+                <p style="font-size: 12px; color: #777;">Guru Kelas 4</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/LGjc5901Gt.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Hajar Triwahyuni, S.Pd</h4>
+                <p style="font-size: 12px; color: #777;">Guru Kelas 5</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imghippo.com/files/nqGJ4776dE.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h4>Linda Fidanawati, S.Pd</h4>
+                <p style="font-size: 12px; color: #777;">Guru Kelas 6</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-slider">
+        <div class="slides">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/SdH7202Iw.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/vgG4503VOw.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/CECR4137Ek.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/XdK3045ge.jpg');"></div>
+     		<div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/Ai7376XDQ.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/GVhm6627GIg.jpg');"></div>
+        </div>
+        <div class="hero-content">
+            <span style="background: var(--primary); padding: 5px 15px; border-radius: 20px; color: white; font-size: 14px;">NPSN: 20527150</span>
+            <h1>SELAMAT DATANG DI SDN SEDDUR 1</h1>
+            <p>Berakhlak mulia, cerdas, dan peduli lingkungan di Desa Seddur, Pakong, Pamekasan.</p>
+            <button onclick="bukaModal()" class="btn">Daftar Sekarang (PPDB)</button>
+        </div>
+    </section>
+
+    <div class="container" id="profil">
+        <div class="section-title">
+            <h2>Keunggulan Kami</h2>
+            <p>Mengapa memilih SDN Seddur 1 sebagai tempat bertumbuh?</p>
+        </div>
+        <div class="grid">
+            <div class="card" onclick="munculInfo('kurikulum')" style="cursor:pointer">
+                <i class="fas fa-book-open"></i>
+                <h3>Kurikulum Merdeka</h3>
+                <p>Pembelajaran fleksibel yang fokus pada materi esensial dan pengembangan karakter.</p>
+            </div>
+            <div class="card" onclick="bukaTenagaPendidik()" style="cursor:pointer">
+                <i class="fas fa-users"></i>
+                <h3>Tenaga Pengajar</h3>
+                <p>Dibimbing oleh 14 guru profesional yang berdedikasi tinggi mendidik sepenuh hati.</p>
+            </div>
+            <div class="card" onclick="munculInfo('karakter')" style="cursor:pointer">
+                <i class="fas fa-mosque"></i>
+                <h3>Pendidikan Karakter</h3>
+                <p>Program harian religius untuk membentuk pondasi akhlak yang kokoh.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="background: #fdfdfd; border-top: 1px solid #eee;">
+        <div class="grid">
+            <div class="card" onclick="munculInfo('visi')" style="cursor:pointer">
+                <h3>Visi & Misi</h3>
+                <p><strong>Visi:</strong> Terwujudnya siswa yang berakhlak mulia, cerdas, terampil, dan peduli lingkungan.</p>
+                <p style="color:var(--primary); font-size:12px; margin-top:10px;">Klik untuk Misi Lengkap</p>
+            </div>
+            <div class="card">
+                <h3>Statistik Sekolah</h3>
+                <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                    <div><h2 style="color: var(--secondary);">13</h2><p>Guru</p></div>
+                    <div><h2 style="color: var(--secondary);">B</h2><p>Akreditasi</p></div>
+                    <div><h2 style="color: var(--secondary);">6</h2><p>Rombel</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="akademik" class="container">
+        <div class="section-title">
+            <h2>📅 Kalender Pendidikan 2025/2026</h2>
+        </div>
+        <div style="position: relative; padding-top: 56.25%; border: 2px solid #ddd; border-radius: 15px; overflow: hidden;">
+            <iframe src="https://drive.google.com/file/d/1lLOZHGJZ8QHc2f_rz1OP0Bb03JkQRxJa/preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </section>
+
+    <div class="container" id="kontak" style="background: #f9f9f9;">
+        <div class="grid">
+            <div class="card" style="text-align: left;">
+                <h3>Lokasi Kami</h3>
+                <p>Dusun Gunung Penang, Desa Seddur, Kec. Pakong, Kab. Pamekasan, Jawa Timur 69352</p>
+                <div style="margin-top:15px; border-radius:10px; overflow:hidden; height:200px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.560613860533!2d113.5684693!3d-7.0607997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd9cd90868f71cb%3A0x6b44766795f5025f!2sSDN%20Seddur%201!5e0!3m2!1sid!2sid!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Hubungi Admin</h3>
+                <p>Pertanyaan seputar PPDB atau informasi sekolah:</p>
+                <a href="https://wa.me/6283833832340" class="btn" style="background: #25d366; color: white; width: 100%; margin-top: 15px;">
+                    <i class="fab fa-whatsapp"></i> Hubungi WhatsApp
+                </a>
+                <p style="margin-top:10px; font-size:12px;">Email: sdnseddur01@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="pengaduan" class="container" style="background: #fdf2f2;">
+        <div class="section-title">
+            <h2 style="color: #c0392b;">Layanan Pengaduan</h2>
+            <p>Sampaikan aspirasi atau keluhan Anda secara resmi.</p>
+        </div>
+        <div style="max-width: 700px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <form action="https://formspree.io/f/mbdwqwkj" method="POST">
+                <input type="text" name="nama" placeholder="Nama Lengkap" required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
+                <input type="tel" name="kontak" placeholder="Nomor WhatsApp" required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
+                <textarea name="pesan" rows="4" placeholder="Isi laporan/saran..." required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;"></textarea>
+                <button type="submit" class="btn" style="width:100%; background:#c0392b; color:white;">Kirim Pengaduan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>Alamat</h4>
+                <p>Dusun Gunung Penang Desa Seddur Kec.Pakong Kab.Pamekasan.</p>
+            </div>
+            <div>
+                <h4>Media Sosial</h4>
+                <div class="social-icons">
+                    <a href="#" style="background: #1877F2;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/sdnseddur1" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #bc1888);"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@sdnseddur1" style="background: #FF0000;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@sdnseddur1" style="background: #000;"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Info Kontak</h4>
+                <p>📧 sdnseddur01@gmail.com</p>
+                <p>📞 +62 838-3383-2340</p>
+            </div>
+        </div>
+        <p style="opacity: 0.5; font-size: 12px;">© 2026 SDN Seddur 1. All Rights Reserved.</p>
+    </footer>
+
+    <div id="kotakInfo" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center;">
+        <div style="background:white; padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative; border-top:10px solid #2e7d32; text-align:center;">
+            <h2 id="judulInfo" style="color:#2e7d32; margin-top:0;">Judul</h2>
+            <div id="isiInfo" style="font-size:16px; line-height:1.6; color:#333; margin: 20px 0; text-align: left;"></div>
+            <button onclick="tutupInfo()" style="background:#fbc02d; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">Tutup</button>
+        </div>
+    </div>
+
+    <div id="modalPPDB" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
+        <div style="background:white; padding:30px; border-radius:15px; width:90%; max-width:450px; text-align:center; position:relative;">
+            <span onclick="tutupModal()" style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:24px;">×</span>
+            <h2 style="color:var(--primary);">Pendaftaran Siswa Baru</h2>
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+                <a href="https://forms.gle/QwMaGFn3pYm5tKjv8" target="_blank" class="btn" style="flex:1;">Online</a>
+                <a href="#kontak" onclick="tutupModal()" class="btn" style="flex:1; background:#eee;">Offline</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 4000);
+
+        // UI Functions
+        function bukaSambutan() {
+            document.getElementById("guruSection").style.display = "none";
+            document.getElementById("sambutanSection").style.display = "block";
+            document.getElementById("sambutanSection").scrollIntoView({ behavior: 'smooth' });
+        }
+        function tutupSambutan() { document.getElementById("sambutanSection").style.display = "none"; }
+
+        function bukaTenagaPendidik() {
+            document.getElementById("sambutanSection").style.display = "none";
+            document.getElementById("guruSection").style.display = "block";
+            document.getElementById("guruSection").scrollIntoView({ behavior: 'smooth' });
+        }
+        function tutupGuru() { document.getElementById("guruSection").style.display = "none"; }
+
+        function bukaModal() { document.getElementById("modalPPDB").style.display = "flex"; }
+        function tutupModal() { document.getElementById("modalPPDB").style.display = "none"; }
+
+        // Fungsi Baru untuk Sub-Menu Profil
+        function munculInfo(tipe) {
+            const kotak = document.getElementById('kotakInfo');
+            const judul = document.getElementById('judulInfo');
+            const isi = document.getElementById('isiInfo');
+            
+            if (tipe === 'visi') {
+                judul.innerText = "Visi & Misi";
+                isi.innerHTML = "<b>Visi:</b><br>Terwujudnya siswa yang berakhlak mulia, cerdas, terampil, dan peduli lingkungan.<br><br><b>Misi:</b><br>1. Menanamkan adab dan pembiasaan religius.<br>2. Melaksanakan pembelajaran aktif dan inovatif.<br>3. Mengembangkan bakat siswa melalui ekstrakurikuler.<br>4. Menciptakan lingkungan sekolah yang bersih dan hijau.";
+            } else if (tipe === 'sarana') {
+                judul.innerText = "Sarana & Prasarana";
+                isi.innerHTML = "Sekolah kami dilengkapi dengan fasilitas penunjang belajar yang memadai:<br>• 6 Ruang Kelas yang Nyaman<br>• Perpustakaan Sekolah<br>• Lapangan Olahraga<br>• Sarana Ibadah<br>• Akses Internet untuk Digital Learning<br>• Taman Sekolah yang Asri";
+            } else if (tipe === 'kurikulum') {
+                judul.innerText = "Kurikulum Merdeka";
+                isi.innerHTML = "Kami menerapkan Kurikulum Merdeka yang memberikan keleluasaan bagi guru untuk menciptakan pembelajaran berkualitas yang sesuai dengan kebutuhan dan lingkungan belajar siswa.";
+            } else if (tipe === 'karakter') {
+                judul.innerText = "Pendidikan Karakter";
+                isi.innerHTML = "Melalui pembiasaan rutin seperti sholat berjamaah, membaca doa, dan budaya 5S (Senyum, Sapa, Salam, Sopan, Santun).";
+            }
+            
+            kotak.style.display = "flex";
+        }
+
+        function tutupInfo() { document.getElementById('kotakInfo').style.display = "none"; }
+    </script>
+</body>
+</html>
