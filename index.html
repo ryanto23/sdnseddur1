@@ -11,20 +11,44 @@
             --secondary: #ffc107;
             --dark: #222;
             --light: #f8f9fa;
+            --danger: #c0392b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
 
-        /* Header Logo Section */
+        /* Header Logo Section dengan Sistem Proteksi Gambar Hilang */
         .main-header {
             display: flex; align-items: center; justify-content: space-between; 
             padding: 10px 10%; background: white; border-bottom: 2px solid var(--primary);
         }
+        .logo-wrapper {
+            position: relative;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .logo-container { display: flex; align-items: center; gap: 12px; }
-        .logo-container img { height: 50px; width: auto; }
-        .logo-text h1 { margin: 0; font-size: 18px; color: var(--primary); font-weight: bold; }
-        .logo-text p { margin: 0; font-size: 11px; color: #666; }
+        
+        /* Ikon Cadangan jika gambar utama tidak ditemukan */
+        .logo-placeholder { 
+            position: absolute;
+            top: 0; left: 0;
+            height: 100%; width: 100%; background: var(--primary); 
+            border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; color: white; font-size: 24px;
+            z-index: 1;
+        }
+        /* Logo Utama Anda */
+        .logo-main { 
+            position: relative;
+            height: 55px; width: 55px; 
+            object-fit: contain;
+            display: block; 
+            z-index: 2;
+        }
 
         /* Navigation & Dropdown */
         nav { 
@@ -50,17 +74,19 @@
             height: 80vh; position: relative; overflow: hidden;
             display: flex; justify-content: center; align-items: center;
             text-align: center; color: white;
+            background: #1b5e20;
         }
         .slides { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
             opacity: 0; transition: opacity 1.5s ease-in-out;
+            background-color: #1b5e20;
         }
         .slide.active { opacity: 1; }
         .hero-content { position: relative; z-index: 2; padding: 0 20px; }
-        .hero-content h1 { font-size: 3.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin: 15px 0; }
-        .hero-content p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; }
+        .hero-content h1 { font-size: 3.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); margin: 15px 0; }
+        .hero-content p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
 
         /* Sections */
         .container { padding: 60px 10%; }
@@ -75,6 +101,13 @@
         }
         .card:hover { transform: translateY(-10px); }
         .card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; }
+
+        /* Guru Avatar Fallback */
+        .guru-avatar {
+            width: 100px; height: 100px; border-radius: 50%; object-fit: cover; 
+            margin: 0 auto 15px; border: 3px solid #eee; background: #e0e0e0;
+            display: flex; align-items: center; justify-content: center; font-size: 36px; color: #757575;
+        }
 
         /* Button Style */
         .btn { 
@@ -92,14 +125,23 @@
         
         .social-icons { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
         .social-icons a { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 20px; }
+
+        /* Form Pengaduan Styler */
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 14px; color: #333; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 14px; }
+        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 5px rgba(46,125,50,0.3); }
+        .security-notice { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; border-radius: 4px; font-size: 12px; color: #856404; margin-bottom: 20px; text-align: left; }
     </style>
 </head>
 <body>
 
     <header class="main-header">
         <div class="logo-container">
-         <img src="https://i.imghippo.com/files/yN4997gXM.jpg" alt="Logo Sekolah" width="80">
-            <img src="https://i.imghippo.com/files/Lou7480OI.jpg" alt="Logo Sekolah">
+            <div class="logo-wrapper">
+                <div class="logo-placeholder"><i class="fas fa-school"></i></div>
+                <img src="logo-sekolah.png" alt="Logo" class="logo-main" onerror="this.style.opacity='0';">
+            </div>
             <div class="logo-text">
                 <h1>SDN SEDDUR 1</h1>
                 <p>Kec. Pakong, Kab. Pamekasan</p>
@@ -132,8 +174,8 @@
     <section id="sambutanSection" style="padding: 40px 10%; background: #f4f4f4; border-bottom: 4px solid var(--primary);">
         <div style="max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 15px; position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
             <button onclick="tutupSambutan()" style="position: absolute; right: 15px; top: 15px; background: #c0392b; color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer;">Tutup X</button>
-            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start;">
-                <img src="https://i.imghippo.com/files/IWD2565ypM.jpeg" style="width: 150px; border-radius: 15px; border: 4px solid var(--primary);">
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+                <div class="guru-avatar" style="width:130px; height:130px; font-size:50px;"><i class="fas fa-user-tie"></i></div>
                 <div style="flex: 1; min-width: 300px;">
                     <h2 style="color: var(--primary); margin-bottom: 15px;">Sambutan Kepala Sekolah</h2>
                     <p style="font-style: italic; white-space: pre-line; font-size: 14px;">Assalamu’alaikum Warahmatullahi Wabarakatuh,
@@ -158,68 +200,69 @@
             <h2>Tenaga Pendidik & Kependidikan</h2>
         </div>
         <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+            
             <div class="card">
-                <img src="https://i.imghippo.com/files/IWD2565ypM.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--secondary);">
+                <div class="guru-avatar" style="border-color: var(--secondary);"><i class="fas fa-user-tie"></i></div>
                 <h4>Mas'udi, S.Pd.SD</h4>
                 <p style="font-size: 12px; color: #777;">Kepala Sekolah</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/Xfc1238CuU.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--primary);">
+                <div class="guru-avatar" style="border-color: var(--primary);"><i class="fas fa-user-cog"></i></div>
                 <h4>Ainor Rahman, S.Ag</h4>
                 <p style="font-size: 12px; color: #777;">Operator Sekolah</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/HsQD2800fI.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-user-graduate"></i></div>
                 <h4>Fathol Bari, SPd.I</h4>
                 <p style="font-size: 12px; color: #777;">Guru Agama</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/zxXa1203wM.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-user"></i></div>
                 <h4>Zaituni, A.Ma.Pd</h4>
                 <p style="font-size: 12px; color: #777;">Guru BHS Madura</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/HCC5891ATk.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-user"></i></div>
                 <h4>Rokayyah, S.Pd.I</h4>
                 <p style="font-size: 12px; color: #777;">Guru Kesenian</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/ZeO6325xQ.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-shield-alt"></i></div>
                 <h4>Alfan Nur Rahman</h4>
                 <p style="font-size: 12px; color: #777;">Penjaga Sekolah</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/pRMY9170HSQ.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-running"></i></div>
                 <h4>Ulya Rohmatina</h4>
                 <p style="font-size: 12px; color: #777;">Guru PJOK</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/BDpv9616LY.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
                 <h4>Yulistina F, S.Pd</h4>
                 <p style="font-size: 12px; color: #777;">Guru Kelas 1</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/Eb3655VDs.jpeg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
                 <h4>Rofiqi, S.Pd</h4>
                 <p style="font-size: 12px; color: #777;">Guru Kelas 2</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/vYVn4520daA.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
                 <h4>Ita Febrianti, S.Pd</h4>
                 <p style="font-size: 12px; color: #777;">Guru Kelas 3</p>
             </div>
             <div class="card">
-                <img src="https://i.ibb.co.com/r2WXMysH/1741311904762.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
                 <h4>Rusdiyanto, S.Pd</h4>
                 <p style="font-size: 12px; color: #777;">Guru Kelas 4</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/LGjc5901Gt.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
                 <h4>Hajar Triwahyuni, S.Pd</h4>
                 <p style="font-size: 12px; color: #777;">Guru Kelas 5</p>
             </div>
             <div class="card">
-                <img src="https://i.imghippo.com/files/nqGJ4776dE.jpg" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <div class="guru-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
                 <h4>Linda Fidanawati, S.Pd</h4>
                 <p style="font-size: 12px; color: #777;">Guru Kelas 6</p>
             </div>
@@ -228,15 +271,11 @@
 
     <section class="hero-slider">
         <div class="slides">
-            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/SdH7202Iw.jpg');"></div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/vgG4503VOw.jpg');"></div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/CECR4137Ek.jpg');"></div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/XdK3045ge.jpg');"></div>
-     		<div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/Ai7376XDQ.jpg');"></div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imghippo.com/files/GVhm6627GIg.jpg');"></div>
+            <div class="slide active" style="background-image: linear-gradient(rgba(46,125,50,0.7), rgba(0,0,0,0.8));"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(255,193,7,0.6), rgba(0,0,0,0.8));"></div>
         </div>
         <div class="hero-content">
-            <span style="background: var(--primary); padding: 5px 15px; border-radius: 20px; color: white; font-size: 14px;">NPSN: 20527150</span>
+            <span style="background: var(--primary); padding: 5px 15px; border-radius: 20px; color: white; font-size: 14px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">NPSN: 20527150</span>
             <h1>SELAMAT DATANG DI SDN SEDDUR 1</h1>
             <p>Berakhlak mulia, cerdas, dan peduli lingkungan di Desa Seddur, Pakong, Pamekasan.</p>
             <button onclick="bukaModal()" class="btn">Daftar Sekarang (PPDB)</button>
@@ -300,7 +339,7 @@
                 <h3>Lokasi Kami</h3>
                 <p>Dusun Gunung Penang, Desa Seddur, Kec. Pakong, Kab. Pamekasan, Jawa Timur 69352</p>
                 <div style="margin-top:15px; border-radius:10px; overflow:hidden; height:200px;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.560613860533!2d113.5684693!3d-7.0607997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd9cd90868f71cb%3A0x6b44766795f5025f!2sSDN%20Seddur%201!5e0!3m2!1sid!2sid!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://maps.google.com/maps?q=SDN%20Seddur%201%20Pakong&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
             <div class="card">
@@ -316,15 +355,60 @@
 
     <section id="pengaduan" class="container" style="background: #fdf2f2;">
         <div class="section-title">
-            <h2 style="color: #c0392b;">Layanan Pengaduan</h2>
-            <p>Sampaikan aspirasi atau keluhan Anda secara resmi.</p>
+            <h2 style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> Layanan Pengaduan Resmi</h2>
+            <p>Sampaikan laporan demi integritas lingkungan SDN Seddur 1.</p>
         </div>
-        <div style="max-width: 700px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <div style="max-width: 750px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            
+            <div class="security-notice">
+                <strong><i class="fas fa-shield-alt"></i> Perlindungan & Keamanan Sistem:</strong><br>
+                1. Setiap laporan masuk dilindungi oleh sistem enkripsi Formspree.<br>
+                2. Sesuai UU ITE, dilarang membuat laporan palsu/fitnah. Sistem melacak IP Address pengirim secara otomatis untuk mencegah penyalahgunaan atau penipuan.
+            </div>
+
             <form action="https://formspree.io/f/mbdwqwkj" method="POST">
-                <input type="text" name="nama" placeholder="Nama Lengkap" required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
-                <input type="tel" name="kontak" placeholder="Nomor WhatsApp" required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
-                <textarea name="pesan" rows="4" placeholder="Isi laporan/saran..." required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;"></textarea>
-                <button type="submit" class="btn" style="width:100%; background:#c0392b; color:white;">Kirim Pengaduan</button>
+                <div class="form-group">
+                    <label>Nama Lengkap Pelapor (Sesuai KTP):</label>
+                    <input type="text" name="nama" placeholder="Contoh: Ahmad Fauzi" required class="form-control">
+                </div>
+
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 0;">
+                    <div class="form-group">
+                        <label>Nomor WhatsApp Aktif:</label>
+                        <input type="tel" name="kontak" placeholder="Contoh: 081234567xxx" pattern="[0-9]{9,14}" title="Masukkan nomor HP berupa angka 9-14 digit" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Pelapor (Opsional):</label>
+                        <input type="email" name="email" placeholder="alamat@email.com" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Kategori Pengaduan / Masalah:</label>
+                    <select name="kategori" required class="form-control">
+                        <option value="">-- Pilih Kategori Masalah --</option>
+                        <option value="Fasilitas/Sarpras">Masalah Sarana & Prasarana</option>
+                        <option value="Pelayanan/Guru">Pelayanan Tenaga Pendidik</option>
+                        <option value="Pungli/Keuangan">Tindakan Pungli / Masalah Keuangan</option>
+                        <option value="Kritik/Saran">Kritik & Saran Membangun</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Isi Laporan Kronologi (Jelas & Faktual):</label>
+                    <textarea name="pesan" rows="5" placeholder="Tuliskan detail kejadian, waktu, dan pihak terlibat jika ada secara jelas..." required class="form-control"></textarea>
+                </div>
+
+                <div class="form-group" style="background: #f9f9f9; padding: 10px; border-radius: 6px; margin-top: 10px;">
+                    <label style="font-weight: normal; font-size: 13px; cursor: pointer;">
+                        <input type="checkbox" required style="margin-right: 5px;"> Saya menyatakan bahwa informasi ini benar tanpa manipulasi dan saya siap bertanggung jawab secara hukum jika laporan ini palsu.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn" style="width:100%; background:var(--danger); color:white; border-radius: 8px; margin-top: 15px;">
+                    <i class="fas fa-paper-plane"></i> Kirim Aduan Valid
+                </button>
             </form>
         </div>
     </section>
@@ -377,9 +461,11 @@
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            if(slides.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
         }
         setInterval(nextSlide, 4000);
 
