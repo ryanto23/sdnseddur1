@@ -109,6 +109,18 @@
             display: flex; align-items: center; justify-content: center; font-size: 36px; color: #757575;
         }
 
+        /* Gaya Khusus Galeri Kegiatan */
+        .galeri-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s;
+        }
+        .galeri-card:hover { transform: scale(1.03); }
+        .galeri-img-box { width: 100%; height: 200px; overflow: hidden; background: #eee; }
+        .galeri-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .galeri-info { padding: 15px; text-align: left; }
+        .galeri-info h4 { color: #333; font-size: 16px; margin-bottom: 5px; }
+        .galeri-info p { color: #777; font-size: 13px; }
+
         /* Button Style */
         .btn { 
             background: var(--secondary); color: var(--dark); padding: 12px 30px; 
@@ -118,7 +130,7 @@
         .btn:hover { background: #e0a800; transform: scale(1.05); }
 
         /* Modal & Floating Sections */
-        #sambutanSection, #guruSection { display: none; }
+        #sambutanSection, #guruSection, #galeriSection { display: none; }
 
         footer { background: var(--dark); color: white; padding: 50px 10% 20px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: left; margin-bottom: 30px; }
@@ -170,11 +182,74 @@
                     <li><a href="javascript:void(0)" onclick="munculInfo('sarana')">Sarana Prasarana</a></li>
                 </ul>
             </li>
+            <li><a href="javascript:void(0)" onclick="bukaGaleri()">📸 GALERI KEGIATAN</a></li>
             <li><a href="#akademik">AKADEMIK</a></li>
             <li><a href="#kontak">KONTAK</a></li>
             <li><a href="#pengaduan">PENGADUAN</a></li>
         </ul>
     </nav>
+
+    <section id="galeriSection" style="background: #f0f4f1; padding: 60px 10%;">
+        <div style="text-align: right; margin-bottom: 20px;">
+            <button onclick="tutupGaleri()" class="btn" style="background: #c0392b; color: white;">Tutup Galeri X</button>
+        </div>
+        <div class="section-title">
+            <h2>Dokumentasi & Kegiatan Sekolah</h2>
+            <p>Kumpulan foto aktivitas, kreativitas, dan momentum penting di SDN Seddur 1</p>
+        </div>
+        
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+            <div class="galeri-card">
+                <div class="galeri-img-box">
+                    <img src="https://i.imghippo.com/files/BDRs2992Ys.jpg" alt="Kegiatan 1">
+                </div>
+                <div class="galeri-info">
+                    <h4>Upacara Bendera</h4>
+                    <p>Pembiasaan disiplin siswa setiap hari Senin pagi.</p>
+                </div>
+            </div>
+            
+            <div class="galeri-card">
+                <div class="galeri-img-box">
+                    <img src="https://i.imghippo.com/files/zxJ9082DxM.jpg" alt="Kegiatan 2">
+                </div>
+                <div class="galeri-info">
+                    <h4>Kegiatan Belajar Mengajar</h4>
+                    <p>Suasana belajar yang interaktif dan menyenangkan di kelas.</p>
+                </div>
+            </div>
+
+            <div class="galeri-card">
+                <div class="galeri-img-box">
+                    <img src="https://i.imghippo.com/files/qKXZ1327fQ.jpg" alt="Kegiatan 3">
+                </div>
+                <div class="galeri-info">
+                    <h4>Pendidikan Karakter Religius</h4>
+                    <p>Pembiasaan salat berjamaah dan doa bersama.</p>
+                </div>
+            </div>
+
+            <div class="galeri-card">
+                <div class="galeri-img-box">
+                    <img src="https://i.imghippo.com/files/fYzR5936GLk.jpg" alt="Kegiatan 4">
+                </div>
+                <div class="galeri-info">
+                    <h4>Kegiatan Ekstrakurikuler</h4>
+                    <p>Wadah pengembangan minat, bakat, dan kreativitas siswa.</p>
+                </div>
+            </div>
+
+            <div class="galeri-card">
+                <div class="galeri-img-box">
+                    <img src="https://i.imghippo.com/files/XfD2275g.jpg" alt="Kegiatan 5">
+                </div>
+                <div class="galeri-info">
+                    <h4>Peduli Lingkungan</h4>
+                    <p>Aksi bersih-bersih dan penghijauan taman sekolah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="sambutanSection" style="padding: 40px 10%; background: #f4f4f4; border-bottom: 4px solid var(--primary);">
         <div style="max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 15px; position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
@@ -307,7 +382,7 @@
             <div class="card" onclick="munculInfo('kurikulum')" style="cursor:pointer">
                 <i class="fas fa-book-open"></i>
                 <h3>Kurikulum Merdeka</h3>
-                <p>Pembelajaran fleksibel yang fokus pada materi esensial dan pengembangan karakter.</p>
+                <p>Pembelajaran fleksibel yang focus pada materi esensial dan pengembangan karakter.</p>
             </div>
             <div class="card" onclick="bukaTenagaPendidik()" style="cursor:pointer">
                 <i class="fas fa-users"></i>
@@ -325,7 +400,7 @@
     <div class="container" style="background: #fdfdfd; border-top: 1px solid #eee;">
         <div class="grid">
             <div class="card" onclick="munculInfo('visi')" style="cursor:pointer">
-                <h3>Visi & Misi</h3>
+                <h3>Viri & Misi</h3>
                 <p><strong>Visi:</strong> Terwujudnya siswa yang berakhlak mulia, cerdas, terampil, dan peduli lingkungan.</p>
                 <p style="color:var(--primary); font-size:12px; margin-top:10px;">Klik untuk Misi Lengkap</p>
             </div>
@@ -488,6 +563,7 @@
         // UI Functions
         function bukaSambutan() {
             document.getElementById("guruSection").style.display = "none";
+            document.getElementById("galeriSection").style.display = "none";
             document.getElementById("sambutanSection").style.display = "block";
             document.getElementById("sambutanSection").scrollIntoView({ behavior: 'smooth' });
         }
@@ -495,10 +571,20 @@
 
         function bukaTenagaPendidik() {
             document.getElementById("sambutanSection").style.display = "none";
+            document.getElementById("galeriSection").style.display = "none";
             document.getElementById("guruSection").style.display = "block";
             document.getElementById("guruSection").scrollIntoView({ behavior: 'smooth' });
         }
         function tutupGuru() { document.getElementById("guruSection").style.display = "none"; }
+
+        // Fungsi baru untuk membuka/menutup Galeri Kegiatan
+        function bukaGaleri() {
+            document.getElementById("sambutanSection").style.display = "none";
+            document.getElementById("guruSection").style.display = "none";
+            document.getElementById("galeriSection").style.display = "block";
+            document.getElementById("galeriSection").scrollIntoView({ behavior: 'smooth' });
+        }
+        function tutupGaleri() { document.getElementById("galeriSection").style.display = "none"; }
 
         function bukaModal() { document.getElementById("modalPPDB").style.display = "flex"; }
         function tutupModal() { document.getElementById("modalPPDB").style.display = "none"; }
