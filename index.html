@@ -181,6 +181,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="javascript:void(0)" onclick="munculInfo('visi')">Visi & Misi</a></li>
                     <li><a href="javascript:void(0)" onclick="bukaSaranaPrasarana()">🏫 Sarana Prasarana</a></li>
+                    <li><a href="javascript:void(0)" onclick="munculInfo('ekstra')">⚽ Ekstrakurikuler</a></li>
                 </ul>
             </li>
             <li><a href="javascript:void(0)" onclick="bukaGaleri()">📸 GALERI KEGIATAN</a></li>
@@ -708,7 +709,7 @@
 
                 <div class="form-group" style="background: #f9f9f9; padding: 10px; border-radius: 6px; margin-top: 10px;">
                     <label style="font-weight: normal; font-size: 13px; cursor: pointer;">
-                        <input type="checkbox" required style="margin-right: 5px;"> Saya menyatakan bahwa informasi ini benar tanpa manipulasi dan saya siap bertanggung jawab secara hukum jika laporan ini palsu.
+                        <input type="checkbox" required style="margin-right: 5px;"> Saya menyatakan bahwa informasi ini benar tanpa manipulasi and saya siap bertanggung jawab secara hukum jika laporan ini palsu.
                     </label>
                 </div>
 
@@ -803,7 +804,7 @@
         }
         function tutupGaleri() { document.getElementById("galeriSection").style.display = "none"; }
 
-        // Fungsi Tambahan Baru untuk Membuka/Menutup Galeri Sarana Prasarana
+        // Fungsi Membuka/Menutup Galeri Sarana Prasarana
         function bukaSaranaPrasarana() {
             document.getElementById("sambutanSection").style.display = "none";
             document.getElementById("guruSection").style.display = "none";
@@ -816,7 +817,7 @@
         function bukaModal() { document.getElementById("modalPPDB").style.display = "flex"; }
         function tutupModal() { document.getElementById("modalPPDB").style.display = "none"; }
 
-        // Fungsi Baru untuk Sub-Menu Profil
+        // Fungsi Sub-Menu Profil Pop-up Info
         function munculInfo(tipe) {
             const kotak = document.getElementById('kotakInfo');
             const judul = document.getElementById('judulInfo');
@@ -834,6 +835,9 @@
             } else if (tipe === 'karakter') {
                 judul.innerText = "Pendidikan Karakter";
                 isi.innerHTML = "Melalui pembiasaan rutin seperti sholat berjamaah, membaca doa, dan budaya 5S (Senyum, Sapa, Salam, Sopan, Santun).";
+            } else if (tipe === 'ekstra') {
+                judul.innerText = "Kegiatan Ekstrakurikuler";
+                isi.innerHTML = "Untuk mengembangkan minat, bakat, dan kreativitas siswa, SDN Seddur 1 menyediakan berbagai kegiatan ekstrakurikuler menarik:<br><br>• ⛺ <b>Pramuka Wajib</b> (Pembentukan Karakter & Kemandirian)<br>• ⚽ <b>Olahraga / Sepak Bola</b> (Kesehatan & Bakat)<br>• 🎨 <b>Seni Tari & Kesenian Madura</b> (Pelestarian Budaya)<br>• 🏆 <b>Bimbingan OSN</b> (Persiapan Kompetisi Sains & Matematika)";
             }
             
             kotak.style.display = "flex";
