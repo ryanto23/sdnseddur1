@@ -173,7 +173,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="javascript:void(0)" onclick="bukaSambutan()">🎤 Sambutan Kepsek</a></li>
                     <li><a href="javascript:void(0)" onclick="bukaTenagaPendidik()">👩‍🏫 Tenaga Pendidik</a></li>
-					<li><a href="javascript:void(0)" onclick="munculInfo('sejarah')">📜 Sejarah Sekolah</a></li>
+                    <li><a href="javascript:void(0)" onclick="munculInfo('sejarah')">📜 Sejarah Sekolah</a></li>
                 </ul>
             </li>
             <li>
@@ -421,7 +421,7 @@
                     <h2 style="color: var(--primary); margin-bottom: 15px;">Sambutan Kepala Sekolah</h2>
                     <p style="font-style: italic; white-space: pre-line; font-size: 14px;">Assalamu’alaikum Warahmatullahi Wabarakatuh,
                     Selamat datang di website resmi SDN Seddur 1. 
-                    Puji syukur kami panjatkan ke hadirat Allah SWT, sehingga platform digital ini dapat hadir sebagai jendela informasi bagi masyarakat, orang tua, dan siswa untuk mengenal lebih dekat sekolah kami.
+                    Puji syukur kami panjatkan ke hadirat Allah SWT, sehingga platform digital ini dapat hadir sebagai jendela informasi bagi masyarakat, orang tua, and siswa untuk mengenal lebih dekat sekolah kami.
 			Kami berkomitmen untuk mencetak generasi yang tidak hanya unggul secara intelektual (Cerdas), namun juga memiliki pondasi akhlak yang kuat (Berkarakter). Melalui sinergi antara guru, orang tua, dan teknologi, kami optimis SDN Seddur 1 akan terus menjadi tempat belajar yang inspiratif dan berwawasan lingkungan.
 
 			Wassalamu’alaikum Warahmatullahi Wabarakatuh.
@@ -557,7 +557,7 @@
     <div class="container" style="background: #fdfdfd; border-top: 1px solid #eee;">
         <div class="grid">
             <div class="card" onclick="munculInfo('visi')" style="cursor:pointer">
-                <h3>Visi & Misi</h3>
+                <h3>Viri & Misi</h3>
                 <p><strong>Visi:</strong> Mencetak Siswa Unggul Berprestasi, Berbudi Pekerti Luhur, Bertakwa dan Peduli Lingkungan.</p>
                 <p style="color:var(--primary); font-size:12px; margin-top:10px;">Klik untuk Misi Lengkap</p>
             </div>
@@ -756,9 +756,9 @@
                 judul.innerText = "Visi & Misi";
                 isi.innerHTML = "<b>Visi:</b><br>Mencetak Siswa Unggul Berprestasi, Berbudi Pekerti Luhur, Bertakwa dan Peduli Lingkungan.<br><br><b>Misi:</b><br>1. Melaksanakan pembelajaran yang efekti,sehingga siswa dapat berkembang secara optimal sesuai dengan potensi yang dimiliki.<br>2. Menumbuhkan penghayatan terhadap ajaran agama dan budaya bangsa, sehingga menjadi sumber kearifan dalam bertindak.<br>3. Menerapkan manageman parsipatif dan peduli lingkungan dengan melibatkan seluruh warga sekolah.";
             } else if (tipe === 'sejarah') {
-        judul.innerText = "Sejarah Sekolah";
-        isi.innerHTML = "<b>Sejarah Singkat SDN Seddur 1:</b><br>SDN Seddur 1 didirikan untuk memberikan akses pendidikan yang berkualitas bagi anak-anak di Desa Seddur dan sekitarnya. Sejak awal berdiri hingga sekarang, sekolah ini terus berkomitmen meningkatkan sarana prasarana serta mutu pengajaran guna mencetak generasi yang cerdas dan berakhlak mulia.";
-    } else if (tipe === 'sarana') {
+                judul.innerText = "Sejarah Sekolah";
+                isi.innerHTML = "<b>Sejarah Singkat SDN Seddur 1:</b><br>SDN Seddur 1 didirikan untuk memberikan akses pendidikan yang berkualitas bagi anak-anak di Desa Seddur dan sekitarnya. Sejak awal berdiri hingga sekarang, sekolah ini terus berkomitmen meningkatkan sarana prasarana serta mutu pengajaran guna mencetak generasi yang cerdas dan berakhlak mulia.";
+            } else if (tipe === 'sarana') {
                 judul.innerText = "Sarana & Prasarana";
                 isi.innerHTML = "Sekolah kami dilengkapi dengan fasilitas penunjang belajar yang memadai:<br>• 6 Ruang Kelas yang Nyaman<br>• Perpustakaan Sekolah<br>• Lapangan Olahraga<br>• Sarana Ibadah<br>• Akses Internet untuk Digital Learning<br>• Taman Sekolah yang Asri";
             } else if (tipe === 'kurikulum') {
