@@ -470,6 +470,24 @@
             </div>
         </div>
     </section>
+<section id="ekstraSection" style="background: #f0f4f1; padding: 60px 10%; display: none;">
+    <div style="text-align: right; margin-bottom: 20px;">
+        <button onclick="tutupEkstra()" class="btn" style="background: #c0392b; color: white;">Tutup Ekstrakurikuler X</button>
+    </div>
+    <div class="section-title">
+        <h2>Kegiatan Ekstrakurikuler</h2>
+    </div>
+    <div class="grid">
+        <div class="galeri-card">
+            <div class="galeri-img-box"><img src="galeri/pramuka.jpg" alt="Pramuka"></div>
+            <div class="galeri-info"><h4>Pramuka</h4></div>
+        </div>
+        <div class="galeri-card">
+            <div class="galeri-img-box"><img src="galeri/olahraga.jpg" alt="Olahraga"></div>
+            <div class="galeri-info"><h4>Olahraga</h4></div>
+        </div>
+    </div>
+</section>
 
     <section id="sambutanSection" style="padding: 40px 10%; background: #f4f4f4; border-bottom: 4px solid var(--primary);">
         <div style="max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 15px; position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
@@ -835,15 +853,58 @@
             } else if (tipe === 'karakter') {
                 judul.innerText = "Pendidikan Karakter";
                 isi.innerHTML = "Melalui pembiasaan rutin seperti sholat berjamaah, membaca doa, dan budaya 5S (Senyum, Sapa, Salam, Sopan, Santun).";
-            } else if (tipe === 'ekstra') {
-                judul.innerText = "Kegiatan Ekstrakurikuler";
-                isi.innerHTML = "Untuk mengembangkan minat, bakat, dan kreativitas siswa, SDN Seddur 1 menyediakan berbagai kegiatan ekstrakurikuler menarik:<br><br>• ⛺ <b>Pramuka Wajib</b> (Pembentukan Karakter & Kemandirian)<br>• ⚽ <b>Olahraga / Sepak Bola</b> (Kesehatan & Bakat)<br>• 🎨 <b>Seni Tari & Kesenian Madura</b> (Pelestarian Budaya)<br>• 🏆 <b>Bimbingan OSN</b> (Persiapan Kompetisi Sains & Matematika)";
-            }
+           } else if (tipe === 'ekstra') {
+        bukaEkstra(); // Memanggil fungsi untuk membuka section foto
+        return; // Menghentikan fungsi agar tidak menampilkan pop-up
+    }
             
             kotak.style.display = "flex";
         }
 
         function tutupInfo() { document.getElementById('kotakInfo').style.display = "none"; }
-    </script>
+	function bukaEkstra() {
+    document.getElementById("sambutanSection").style.display = "none";
+    document.getElementById("guruSection").style.display = "none";
+    document.getElementById("galeriSection").style.display = "none";
+    document.getElementById("saranaSection").style.display = "none";
+    document.getElementById("kotakInfo").style.display = "none";
+    
+    document.getElementById("ekstraSection").style.display = "block";
+    document.getElementById("ekstraSection").scrollIntoView({ behavior: 'smooth' });
+}
+
+function bukaEkstra() {
+    // Sembunyikan semua section lain
+    document.getElementById("sambutanSection").style.display = "none";
+    document.getElementById("guruSection").style.display = "none";
+    document.getElementById("galeriSection").style.display = "none";
+    document.getElementById("saranaSection").style.display = "none";
+    document.getElementById("kotakInfo").style.display = "none";
+    
+    // Tampilkan section Ekstra
+    document.getElementById("ekstraSection").style.display = "block";
+    document.getElementById("ekstraSection").scrollIntoView({ behavior: 'smooth' });
+}
+
+function tutupEkstra() {
+    document.getElementById("ekstraSection").style.display = "none";
+} 
+ </script>
+<section id="ekstraSection" style="background: #f0f4f1; padding: 60px 10%; display: none;">
+    <div style="text-align: right; margin-bottom: 20px;">
+        <button onclick="tutupEkstra()" class="btn" style="background: #c0392b; color: white;">Tutup X</button>
+    </div>
+    <div class="section-title"><h2>Kegiatan Ekstrakurikuler</h2></div>
+    <div class="grid">
+        <div class="galeri-card">
+            <div class="galeri-img-box"><img src="galeri/pramuka.jpg" alt="Pramuka"></div>
+            <div class="galeri-info"><h4>Pramuka</h4></div>
+        </div>
+        <div class="galeri-card">
+            <div class="galeri-img-box"><img src="galeri/olahraga.jpg" alt="Olahraga"></div>
+            <div class="galeri-info"><h4>Olahraga</h4></div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
