@@ -921,48 +921,23 @@
 
         function tutupInfo() { document.getElementById('kotakInfo').style.display = "none"; }
 	function bukaEkstra() {
-    document.getElementById("sambutanSection").style.display = "none";
-    document.getElementById("guruSection").style.display = "none";
-    document.getElementById("galeriSection").style.display = "none";
-    document.getElementById("saranaSection").style.display = "none";
-    document.getElementById("kotakInfo").style.display = "none";
-    
-    document.getElementById("ekstraSection").style.display = "block";
-    document.getElementById("ekstraSection").scrollIntoView({ behavior: 'smooth' });
-}
+        // Sembunyikan semua section lain
+        document.getElementById("sambutanSection").style.display = "none";
+        document.getElementById("guruSection").style.display = "none";
+        document.getElementById("galeriSection").style.display = "none";
+        document.getElementById("saranaSection").style.display = "none";
+        document.getElementById("kotakInfo").style.display = "none";
+        
+        // Tampilkan section Ekstra
+        document.getElementById("ekstraSection").style.display = "block";
+        document.getElementById("ekstraSection").scrollIntoView({ behavior: 'smooth' });
+    }
 
-function bukaEkstra() {
-    // Sembunyikan semua section lain
-    document.getElementById("sambutanSection").style.display = "none";
-    document.getElementById("guruSection").style.display = "none";
-    document.getElementById("galeriSection").style.display = "none";
-    document.getElementById("saranaSection").style.display = "none";
-    document.getElementById("kotakInfo").style.display = "none";
-    
-    // Tampilkan section Ekstra
-    document.getElementById("ekstraSection").style.display = "block";
-    document.getElementById("ekstraSection").scrollIntoView({ behavior: 'smooth' });
-}
-
-function tutupEkstra() {
-    document.getElementById("ekstraSection").style.display = "none";
-} 
+    function tutupEkstra() {
+        document.getElementById("ekstraSection").style.display = "none";
+    }
+		
  </script>
-<section id="ekstraSection" style="background: #f0f4f1; padding: 60px 10%; display: none;">
-    <div style="text-align: right; margin-bottom: 20px;">
-        <button onclick="tutupEkstra()" class="btn" style="background: #c0392b; color: white;">Tutup X</button>
-    </div>
-    <div class="section-title"><h2>Kegiatan Ekstrakurikuler</h2></div>
-    <div class="grid">
-        <div class="galeri-card">
-            <div class="galeri-img-box"><img src="galeri/pramuka.jpg" alt="Pramuka"></div>
-            <div class="galeri-info"><h4>Pramuka</h4></div>
-        </div>
-        <div class="galeri-card">
-            <div class="galeri-img-box"><img src="galeri/olahraga.jpg" alt="Olahraga"></div>
-            <div class="galeri-info"><h4>Olahraga</h4></div>
-        </div>
-    </div>
-</section>
+
 </body>
 </html>
