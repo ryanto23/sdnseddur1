@@ -1005,8 +1005,9 @@
         document.getElementById("ekstraSection").style.display = "none";
     }
 
-			 </script>
-<!-- 1. SCRIPT JAVASCRIPT UNTUK MENJALANKAN MODAL -->
+		</script>
+
+<!-- SCRIPT UTAMA MODAL GURU -->
 <script>
     const dataGuru = {
         "rusdiyanto": {
@@ -1016,34 +1017,31 @@
             profil: "Guru Kelas 4 SDN Seddur 1 yang aktif mendampingi proses belajar siswa agar lebih aktif, kreatif, dan menyenangkan.",
             perangkat: [
                 "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 4</a>",
-                "<a href='#' target='_blank'>Capaian Pembelajaran (CP) & TP Kelas 4</a>"
-				"<a href='#' target='_blank'>Jadwal Pelajaran</a>"
+                "<a href='#' target='_blank'>Capaian Pembelajaran (CP) & TP Kelas 4</a>",
+                "<a href='#' target='_blank'>Jadwal Pelajaran</a>"
             ]
         },
-    "hajar": {
-        nama: "Hajar Triwahyuni, S.Pd",
-        jabatan: "Guru Kelas 5",
-        foto: "galeri/yuni.jpg",
-        profil: "Guru Kelas 5 SDN Seddur 1 yang aktif mendampingi proses belajar siswa.",
-        perangkat: [
-            "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 5</a>",
-            "<a href='#' target='_blank'>Capaian Pembelajaran (CP) & TP Kelas 5</a>"
-			"<a href='#' target='_blank'>Jadwal Pelajaran</a>"
-			]
+        "hajar": {
+            nama: "Hajar Triwahyuni, S.Pd",
+            jabatan: "Guru Kelas 5",
+            foto: "galeri/yuni.jpg",
+            profil: "Guru Kelas 5 SDN Seddur 1 yang aktif mendampingi proses belajar siswa.",
+            perangkat: [
+                "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 5</a>",
+                "<a href='#' target='_blank'>Capaian Pembelajaran (CP) & TP Kelas 5</a>"
+            ]
         },
-		"linda": {
-        nama: "Linda Fidanawati, S.Pd",
-        jabatan: "Guru Kelas 6",
-        foto: "galeri/linda.jpg",
-        profil: "Guru Kelas 6 SDN Seddur 1 yang membimbing siswa-siswi kelas akhir menghadapi kelulusan dengan persiapan terbaik.",
-        perangkat: [
-            "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 6</a>",
-            "<a href='#' target='_blank'>Kisi-kisi & Soal Asesmen Sumatif Kelas 6</a>",
-            "<a href='#' target='_blank'>Agenda Kelulusan & Nilai Ijazah</a>"
-        ]
-    }
-};
-     
+        "linda": {
+            nama: "Linda Fidanawati, S.Pd",
+            jabatan: "Guru Kelas 6",
+            foto: "galeri/linda.jpg",
+            profil: "Guru Kelas 6 SDN Seddur 1 yang membimbing siswa-siswi kelas akhir menghadapi kelulusan.",
+            perangkat: [
+                "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 6</a>",
+                "<a href='#' target='_blank'>Kisi-kisi Asesmen Kelas 6</a>"
+            ]
+        }
+    };
 
     function bukaModalGuru(kunci) {
         const guru = dataGuru[kunci];
@@ -1067,7 +1065,7 @@
     }
 </script>
 
-<!-- Modal Profil & Perangkat Ajar (Cukup 1 saja di bawah) -->
+<!-- STRUKTUR TAMPILAN POP-UP (MODAL) -->
 <div id="guruModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center;">
     <div style="background: white; width: 90%; max-width: 500px; padding: 25px; border-radius: 12px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
         <button onclick="tutupModalGuru()" style="position: absolute; right: 15px; top: 15px; background: #c0392b; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">X</button>
