@@ -656,10 +656,12 @@
                 <h4>Ita Febrianti, S.Pd</h4>
                 <p style="font-size: 12px; color: #777;">Guru Kelas 3</p>
             </div>
-            <div class="card">
-                <div class="guru-avatar"><img src="galeri/rusdi.jpeg" alt="Rusdiyanto" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
-                <h4>Rusdiyanto, S.Pd</h4>
-                <p style="font-size: 12px; color: #777;">Guru Kelas 4</p>
+			<div class="card" onclick="bukaModalGuru('rusdiyanto')" style="cursor: pointer;">
+    <div class="guru-avatar"><img src="galeri/rusdi.jpeg" alt="Rusdiyanto" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
+    <h4>Rusdiyanto, S.Pd</h4>
+    <p style="font-size: 12px; color: #777;">Guru Kelas 4</p>
+    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk Profil & Perangkat ➔</span>
+</div>
             </div>
             <div class="card">
                 <div class="guru-avatar"><img src="galeri/yuni.jpg" alt="Hajar Triwahyuni" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
@@ -996,6 +998,65 @@
     }
 		
  </script>
+<!-- Modal Profil & Perangkat Ajar -->
+<div id="guruModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center;">
+    <div style="background: white; width: 90%; max-width: 500px; padding: 25px; border-radius: 12px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+        <button onclick="tutupModalGuru()" style="position: absolute; right: 15px; top: 15px; background: #c0392b; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">X</button>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img id="modalFoto" src="" alt="Foto Guru" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin-bottom: 10px;">
+            <h3 id="modalNama" style="color: var(--primary);"></h3>
+            <p id="modalJabatan" style="font-size: 13px; color: #777; font-weight: bold;"></p>
+        </div>
 
+        <div style="margin-bottom: 20px;">
+            <h4 style="font-size: 15px; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-bottom: 8px;">📋 Profil Singkat</h4>
+            <p id="modalProfil" style="font-size: 13px; color: #555; line-height: 1.5;"></p>
+        </div>
+
+        <div>
+            <h4 style="font-size: 15px; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-bottom: 8px;">📚 Perangkat Ajar</h4>
+            <ul id="modalPerangkat" style="padding-left: 20px; font-size: 13px; color: #333;"></ul>
+        </div>
+    </div>
+</div>
+	 </script>
+	// Database khusus untuk Guru Kelas 4 (Rusdianto)
+const dataGuru = {
+    "rusdiyanto": {
+        nama: "Rusdiyanto, S.Pd",
+        jabatan: "Guru Kelas 4",
+        foto: "galeri/rusdi.jpeg",
+        profil: "Guru Kelas 4 SDN Seddur 1 yang aktif mendampingi proses belajar siswa kelas 4 agar lebih aktif, kreatif, dan menyenangkan.",
+        perangkat: [
+            "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 4</a>",
+            "<a href='#' target='_blank'>Capaian Pembelajaran (CP) & TP Kelas 4</a>",
+            "<a href='#' target='_blank'>Jadwal Piket & Daftar Nilai Siswa</a>"
+        ]
+    }
+};
+
+function bukaModalGuru(kunci) {
+    const guru = dataGuru[kunci];
+    if (!guru) return;
+
+    document.getElementById('modalFoto').src = guru.foto;
+    document.getElementById('modalNama').innerText = guru.nama;
+    document.getElementById('modalJabatan').innerText = guru.jabatan;
+    document.getElementById('modalProfil').innerText = guru.profil;
+
+    let listPerangkat = "";
+    guru.perangkat.forEach(item => {
+        listPerangkat += `<li style="margin-bottom: 5px;">${item}</li>`;
+    });
+    document.getElementById('modalPerangkat').innerHTML = listPerangkat;
+
+    document.getElementById('guruModal').style.display = 'flex';
+}
+
+function tutupModalGuru() {
+    document.getElementById('guruModal').style.display = 'none';
+}
+	 </script>
 </body>
 </html>
