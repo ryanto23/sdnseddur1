@@ -655,39 +655,39 @@
     <div class="guru-avatar"><img src="galeri/yulis.jpeg" alt="Yulistina" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
     <h4>Yulistina Faridaningsih, S.Pd</h4>
     <p style="font-size: 12px; color: #777;">Guru Kelas 1</p>
-    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk Profil & Perangkat ➔</span>
+    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk WhatsApp ➔</span>
 </div>
 
 <div class="card" onclick="bukaModalGuru('Ita')" style="cursor: pointer;">
     <div class="guru-avatar"><img src="galeri/ita.jpg" alt="Ita Febrianti" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
     <h4>Ita Febrianti, S.Pd</h4>
     <p style="font-size: 12px; color: #777;">Guru Kelas 2</p>
-    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk Profil & Perangkat ➔</span>
+    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk WhatsApp ➔</span>
 </div>
 
 <div class="card" onclick="bukaModalGuru('Rofiqi')" style="cursor: pointer;">
     <div class="guru-avatar"><img src="galeri/rifiqi.jpeg" alt="Rofiqi" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
     <h4>Rofiqi, S.Pd</h4>
     <p style="font-size: 12px; color: #777;">Guru Kelas 3</p>
-    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk Profil & Perangkat ➔</span>
+    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk WhatsApp ➔</span>
 </div>
 				<div class="card" onclick="bukaModalGuru('rusdiyanto')" style="cursor: pointer;">
     <div class="guru-avatar"><img src="galeri/rusdi.jpeg" alt="Rusdiyanto" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
     <h4>Rusdiyanto, S.Pd</h4>
     <p style="font-size: 12px; color: #777;">Guru Kelas 4</p>
-    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk Profil & Perangkat ➔</span>
+    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik ke Blog ➔</span>
 </div>
 			<div class="card" onclick="bukaModalGuru('hajar')" style="cursor: pointer;">
     <div class="guru-avatar"><img src="galeri/yuni.jpg" alt="Hajar Triwahyuni" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
     <h4>Hajar Triwahyuni, S.Pd</h4>
     <p style="font-size: 12px; color: #777;">Guru Kelas 5</p>
-    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk Profil & Perangkat ➔</span>
+    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk WhatsApp ➔</span>
 </div>
 		<div class="card" onclick="bukaModalGuru('linda')" style="cursor: pointer;">
     <div class="guru-avatar"><img src="galeri/linda.jpg" alt="Linda Firdanawati" style="width:100%; height:100%; border-radius:50%; object-fit:cover;"></div>
     <h4>Linda Firdanawati, S.Pd</h4>
     <p style="font-size: 12px; color: #777;">Guru Kelas 6</p>
-    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk Profil & Perangkat ➔</span>
+    <span style="font-size: 11px; color: var(--primary); font-weight: bold; display: block; margin-top: 8px;">Klik untuk WhatsApp ➔</span>
 </div>	
         </div>
     </section>
@@ -1021,119 +1021,25 @@
 
 <!-- SCRIPT UTAMA MODAL GURU -->
 <script>
-	const dataGuru = {
-    "Yulistina": {
-        nama: "Yulistina Faridaningsih, S.Pd",
-        jabatan: "Guru Kelas 1",
-        foto: "galeri/yulis.jpeg",
-        profil: "Guru Kelas 1 SDN Seddur 1 yang telaten membimbing siswa dalam masa transisi awal sekolah dasar.",
-        perangkat: [
-            "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 1</a>",
-            "<a href='https://drive.google.com/drive/folders/1OqrZoVv663UOzpffuFQ-MyHQD5iRZHEy?usp=sharing' target='_blank'>TEACHER PLANNER Kelas 1</a>",
-			"<a href='https://drive.google.com/file/d/1dvD455A3yyTrkViCrvE3Me2BdFGPZJjZ/view?usp=sharing' target='_blank'>Jadwal Pelajaran</a>"
-        ]
-    },
-    "Ita": {
-        nama: "Ita Febrianti, S.Pd",
-        jabatan: "Guru Kelas 2",
-        foto: "galeri/ita.jpg",
-        profil: "Guru Kelas 2 SDN Seddur 1 yang berdedikasi membangun fondasi literasi dan numerasi siswa.",
-        perangkat: [
-            "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 2</a>",
-            "<a href='https://drive.google.com/drive/folders/1h0Gw4jujZ5BrkD24Rl_yfg03B1FfakhR?usp=sharing' target='_blank'>TEACHER PLANNER Kelas 2</a>",
-			"<a href='https://drive.google.com/file/d/1dvD455A3yyTrkViCrvE3Me2BdFGPZJjZ/view?usp=sharing' target='_blank'>Jadwal Pelajaran</a>"
-        ]
-    },
-    "Rofiqi": {
-        nama: "Rofiqi, S.Pd",
-        jabatan: "Guru Kelas 3",
-        foto: "galeri/rifiqi.jpeg",
-        profil: "Guru Kelas 3 SDN Seddur 1 yang interaktif dan menyenangkan dalam mendampingi proses belajar siswa.",
-        perangkat: [
-            "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 3</a>",
-            "<a href='https://drive.google.com/drive/folders/1zQ2hpYoQBTdU40CkqjWdhKXSekBnQpPg?usp=sharing' target='_blank'>TEACHER PLANNER Kelas 3</a>",
-			"<a href='https://drive.google.com/file/d/1dvD455A3yyTrkViCrvE3Me2BdFGPZJjZ/view?usp=sharing' target='_blank'>Jadwal Pelajaran</a>"
-        ]
-    },
-		"rusdiyanto": {
-            nama: "Rusdiyanto, S.Pd",
-            jabatan: "Guru Kelas 4",
-            foto: "galeri/rusdi.jpeg",
-            profil: "Guru Kelas 4 SDN Seddur 1 yang aktif mendampingi proses belajar siswa agar lebih aktif, kreatif, dan menyenangkan.",
-            perangkat: [
-                "<a href='https://drive.google.com/drive/folders/1xfsm9zrVHNZdew3Y2k-xwDDH6CSlru4S?usp=sharing' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 4</a>",
-				"<a href='https://drive.google.com/drive/folders/1IPzQQOWYnxZM748acwphi04CNj-gq7Ne?usp=sharing' target='_blank'>Data Siswa Kelas 4</a>",
-                "<a href='https://drive.google.com/drive/folders/1h-p10zLnubcKD7qRtMt-4bo7ftefyL0k?usp=sharing' target='_blank'>TEACHER PLANNER KELAS 4</a>",
-                "<a href='https://drive.google.com/file/d/1dvD455A3yyTrkViCrvE3Me2BdFGPZJjZ/view?usp=sharing' target='_blank'>Jadwal Pelajaran</a>"
-            ]
-        },
-        "hajar": {
-            nama: "Hajar Triwahyuni, S.Pd",
-            jabatan: "Guru Kelas 5",
-            foto: "galeri/yuni.jpg",
-            profil: "Guru Kelas 5 SDN Seddur 1 yang aktif mendampingi proses belajar siswa.",
-            perangkat: [
-                "<a href='#' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 5</a>",
-                "<a href='https://drive.google.com/drive/folders/1i5RrMqgWvSnnYZGTJnyBNoBnk3vL4HjJ?usp=sharing' target='_blank'>TEACHER PLANNER Kelas 5</a>",
-				"<a href='https://drive.google.com/file/d/1dvD455A3yyTrkViCrvE3Me2BdFGPZJjZ/view?usp=sharing' target='_blank'>Jadwal Pelajaran</a>"
-            ]
-        },
-        "linda": {
-            nama: "Linda Firdanawati, S.Pd",
-            jabatan: "Guru Kelas 6",
-            foto: "galeri/linda.jpg",
-            profil: "Guru Kelas 6 SDN Seddur 1 yang membimbing siswa-siswi kelas akhir menghadapi kelulusan.",
-            perangkat: [
-                "<a href='https://drive.google.com/drive/folders/1IpOCpIpWsG3eKVfcKtvZoQSl4vdavR4I?usp=sharing' target='_blank'>Modul Ajar Kurikulum Merdeka Kelas 6</a>",
-                "<a href='https://drive.google.com/drive/folders/1DCITTEyh6hu15IsmlC2ZiXcR3Q-w0p6m?usp=sharing' target='_blank'>TEACHER PLANNER Kelas 6</a>",
-				"<a href='https://drive.google.com/file/d/1dvD455A3yyTrkViCrvE3Me2BdFGPZJjZ/view?usp=sharing' target='_blank'>Jadwal Pelajaran</a>"
-            ]
-        }
-    };
-
     function bukaModalGuru(kunci) {
-        const guru = dataGuru[kunci];
-        if (!guru) return;
+        if (kunci === 'rusdiyanto') {
+            // Langsung arahkan ke blog Pak Rusdiyanto
+            window.open('https://ryanto23.github.io/rusdiyanto/', '_blank');
+        } else {
+            // Guru lainnya diarahkan ke WhatsApp
+            let namaGuruStr = '';
+            if (kunci === 'Yulistina') namaGuruStr = 'Bu Yulistina Faridaningsih';
+            else if (kunci === 'Ita') namaGuruStr = 'Bu Ita Febrianti';
+            else if (kunci === 'Rofiqi') namaGuruStr = 'Pak Rofiqi';
+            else if (kunci === 'hajar') namaGuruStr = 'Bu Hajar Triwahyuni';
+            else if (kunci === 'linda') namaGuruStr = 'Bu Linda Firdanawati';
 
-        document.getElementById('modalFoto').src = guru.foto;
-        document.getElementById('modalNama').innerText = guru.nama;
-        document.getElementById('modalJabatan').innerText = guru.jabatan;
-        document.getElementById('modalProfil').innerText = guru.profil;
-
-        let listPerangkat = "";
-        guru.perangkat.forEach(item => {
-            listPerangkat += `<li style="margin-bottom: 5px;">${item}</li>`;
-        });
-        document.getElementById('modalPerangkat').innerHTML = listPerangkat;
-        document.getElementById('guruModal').style.display = 'flex';
-    }
-
-    function tutupModalGuru() {
-        document.getElementById('guruModal').style.display = 'none';
+            let nomorWa = '628999910186'; // Ubah nomor WhatsApp sesuai kebutuhan
+            let pesan = `Halo ${namaGuruStr}, saya ingin bertanya seputar perangkat ajar dan informasi kelas.`;
+            let urlWa = `https://wa.me/${nomorWa}?text=${encodeURIComponent(pesan)}`;
+            window.open(urlWa, '_blank');
+        }
     }
 </script>
-
-<!-- STRUKTUR TAMPILAN POP-UP (MODAL) -->
-<div id="guruModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center;">
-    <div style="background: white; width: 90%; max-width: 500px; padding: 25px; border-radius: 12px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <button onclick="tutupModalGuru()" style="position: absolute; right: 15px; top: 15px; background: #c0392b; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">X</button>
-        
-        <div style="text-align: center; margin-bottom: 20px;">
-            <img id="modalFoto" src="" alt="Foto Guru" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin-bottom: 10px;">
-            <h3 id="modalNama" style="color: var(--primary);"></h3>
-            <p id="modalJabatan" style="font-size: 13px; color: #777; font-weight: bold;"></p>
-        </div>
-
-        <div style="margin-bottom: 20px;">
-            <h4 style="font-size: 15px; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-bottom: 8px;">📋 Profil Singkat</h4>
-            <p id="modalProfil" style="font-size: 13px; color: #555; line-height: 1.5;"></p>
-        </div>
-
-        <div>
-            <h4 style="font-size: 15px; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-bottom: 8px;">📚 Perangkat Kelas</h4>
-            <ul id="modalPerangkat" style="padding-left: 20px; font-size: 13px; color: #333;"></ul>
-        </div>
-    </div>
-</div>
 </body>
 </html>
