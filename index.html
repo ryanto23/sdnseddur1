@@ -46,7 +46,7 @@
             z-index: 9999; backdrop-filter: blur(5px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
         }
         .menu-toggle {
-            display: none; background: none; border: none; color: white; font-size: 24px; padding: 15px; cursor: pointer; width: 100%; text-align: left;
+            display: none; background: none; border: none; color: white; font-size: 20px; padding: 15px; cursor: pointer; width: 100%; text-align: left;
         }
         nav ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; flex-wrap: wrap; }
         nav ul li { position: relative; }
@@ -77,7 +77,7 @@
         }
         .slide.active { opacity: 1; }
         .hero-content { position: relative; z-index: 2; padding: 0 15px; }
-        .hero-content h1 { font-size: 2rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); margin: 15px 0; }
+        .hero-content h1 { font-size: 2.2rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); margin: 15px 0; }
         .hero-content p { font-size: 1rem; max-width: 800px; margin: 0 auto 20px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
 
         /* Sections & Containers */
@@ -116,7 +116,8 @@
         }
         .btn:hover { background: #e0a800; }
 
-        #sambutanSection, #guruSection, #galeriSection, #saranaSection, #ekstraSection { display: none; }
+        /* Dynamic Sections Control */
+        #sambutanSection, #guruSection, #galeriSection, #saranaSection, #ekstraSection, #kotakInfo { display: none; }
 
         footer { background: var(--dark); color: white; padding: 40px 5% 20px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left; margin-bottom: 20px; }
@@ -128,7 +129,7 @@
         .form-control { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 14px; }
         .security-notice { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px; border-radius: 4px; font-size: 11px; color: #856404; margin-bottom: 15px; text-align: left; }
 
-        /* Media Query Khusus HP (Mobile View Optimization) */
+        /* Media Query Khusus HP */
         @media screen and (max-width: 768px) {
             .main-header { padding: 10px 3%; }
             .logo-text h1 { font-size: 1rem; }
@@ -151,7 +152,7 @@
                 background: rgba(0,0,0,0.1); 
                 width: 100%; 
             }
-            nav ul li:hover .dropdown-menu { display: none; } /* Ubah interaksi dropdown untuk HP menggunakan klik JS jika diperlukan, atau biarkan tampil */
+            nav ul li:hover .dropdown-menu { display: none; }
             nav ul li.open .dropdown-menu { display: block; }
 
             .hero-slider { height: 60vh; }
@@ -164,7 +165,8 @@
 </head>
 <body>
 
-   <header class="main-header">
+    <!-- Header & Logo -->
+    <header class="main-header">
         <div class="logo-container">
             <div class="logo-wrapper">
                 <div class="logo-placeholder"><i class="fas fa-school"></i></div>
@@ -182,6 +184,7 @@
         </div>
     </header>
 
+    <!-- Navigasi & Tombol Hamburger HP -->
     <nav>
         <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i> Menu Utama</button>
         <ul id="navMenu">
@@ -209,8 +212,196 @@
 		</ul>
     </nav>
 
-    <!-- (Bagian Konten Lainnya Tetap Seperti Semula, Hanya Penyesuaian Style CSS di Atas) -->
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+        <div class="slides">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('galeri/slide1.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('galeri/slide2.jpg');"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Selamat Datang di SDN Seddur 1</h1>
+            <p>Mewujudkan Generasi Cerdas, Kreatif, Berkarakter, dan Berbudaya Lingkungan.</p>
+            <button class="btn" onclick="bukaModal()">Pendaftaran PPDB</button>
+        </div>
+    </section>
 
+    <!-- Kotak Informasi Dinamis (Popup/Section Info) -->
+    <div id="kotakInfo" class="container" style="background: #fff; border-bottom: 2px solid #ddd;">
+        <div class="section-title">
+            <h2 id="judulInfo">Informasi</h2>
+        </div>
+        <p id="isiInfo" style="text-align: center; max-width: 800px; margin: 0 auto 20px;"></p>
+        <div style="text-align: center;">
+            <button class="btn" onclick="tutupInfo()">Tutup Informasi</button>
+        </div>
+    </div>
+
+    <!-- Section Sambutan Kepala Sekolah -->
+    <section id="sambutanSection" class="container">
+        <div class="section-title">
+            <h2>Sambutan Kepala Sekolah</h2>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+            <div style="flex: 1; min-width: 250px; text-align: center;">
+                <div class="guru-avatar" style="width: 150px; height: 150px; font-size: 60px;"><i class="fas fa-user-tie"></i></div>
+                <h4>Kepala Sekolah</h4>
+            </div>
+            <div style="flex: 2; min-width: 280px;">
+                <p>Assalamu'alaikum Wr. Wb.<br><br>Puji syukur kita panjatkan ke hadirat Allah SWT. Website resmi SDN Seddur 1 ini hadir sebagai sarana informasi dan komunikasi bagi seluruh warga sekolah, orang tua siswa, serta masyarakat luas. Kami berkomitmen untuk terus meningkatkan kualitas pendidikan demi mencetak generasi bangsa yang unggul.</p>
+                <br>
+                <button class="btn" onclick="tutupSambutan()">Tutup Sambutan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Tenaga Pendidik -->
+    <section id="guruSection" class="container">
+        <div class="section-title">
+            <h2>Tenaga Pendidik & Kependidikan</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="guru-avatar"><i class="fas fa-user"></i></div>
+                <h3>Dewan Guru</h3>
+                <p>Guru Kelas & Mata Pelajaran yang Berdedikasi Tinggi di SDN Seddur 1.</p>
+            </div>
+        </div>
+        <br style="clear: both;">
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn" onclick="tutupGuru()">Tutup Tenaga Pendidik</button>
+        </div>
+    </section>
+
+    <!-- Section Galeri -->
+    <section id="galeriSection" class="container">
+        <div class="section-title">
+            <h2>Galeri Kegiatan Sekolah</h2>
+        </div>
+        <div class="grid">
+            <div class="galeri-card">
+                <div class="galeri-img-box"><div style="display:flex;align-items:center;justify-content:center;height:100%;background:#e0e0e0;color:#777;"><i class="fas fa-image fa-2x"></i></div></div>
+                <div class="galeri-info">
+                    <h4>Kegiatan Upacara</h4>
+                    <p>Rutinitas hari senin menumbuhkan nasionalisme.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div style="text-align: center;">
+            <button class="btn" onclick="tutupGaleri()">Tutup Galeri</button>
+        </div>
+    </section>
+
+    <!-- Section Sarana Prasarana -->
+    <section id="saranaSection" class="container">
+        <div class="section-title">
+            <h2>Sarana & Prasarana</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-book-reader"></i>
+                <h3>Ruang Kelas</h3>
+                <p>Nyaman dan kondusif untuk proses kegiatan belajar mengajar.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-futbol"></i>
+                <h3>Lapangan Sekolah</h3>
+                <p>Area luas untuk kegiatan olahraga dan upacara bendera.</p>
+            </div>
+        </div>
+        <br>
+        <div style="text-align: center;">
+            <button class="btn" onclick="tutupSaranaPrasarana()">Tutup Sarana</button>
+        </div>
+    </section>
+
+    <!-- Section Ekstrakurikuler -->
+    <section id="ekstraSection" class="container">
+        <div class="section-title">
+            <h2>Ekstrakurikuler</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-campground"></i>
+                <h3>Pramuka</h3>
+                <p>Membentuk karakter disiplin dan mandiri.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-running"></i>
+                <h3>Olahraga</h3>
+                <p>Mengembangkan potensi fisik dan sportivitas.</p>
+            </div>
+        </div>
+        <br>
+        <div style="text-align: center;">
+            <button class="btn" onclick="tutupEkstra()">Tutup Ekstrakurikuler</button>
+        </div>
+    </section>
+
+    <!-- Bagian Akademik Utama -->
+    <section id="akademik" class="container">
+        <div class="section-title">
+            <h2>Program Akademik</h2>
+        </div>
+        <div class="grid">
+            <div class="card" onclick="munculInfo('kurikulum')" style="cursor: pointer;">
+                <i class="fas fa-book"></i>
+                <h3>Kurikulum Merdeka</h3>
+                <p>Pembelajaran berbasis proyek untuk pengembangan profil pelajar Pancasila.</p>
+            </div>
+            <div class="card" onclick="munculInfo('karakter')" style="cursor: pointer;">
+                <i class="fas fa-award"></i>
+                <h3>Pendidikan Karakter</h3>
+                <p>Penanaman nilai budi pekerti luhur dalam keseharian siswa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak & Pengaduan -->
+    <section id="kontak" class="container" style="background: var(--light);">
+        <div class="section-title">
+            <h2>Kontak Kami</h2>
+        </div>
+        <p style="text-align: center; margin-bottom: 20px;">Alamat: Jl. Desa Seddur, Kec. Pakong, Kab. Pamekasan, Jawa Timur.</p>
+    </section>
+
+    <section id="pengaduan" class="container">
+        <div class="section-title">
+            <h2>Kotak Pengaduan & Saran</h2>
+        </div>
+        <div style="max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <div class="security-notice">
+                <i class="fas fa-shield-alt"></i> Masukkan pesan atau saran Anda secara bijak dan sopan.
+            </div>
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" class="form-control" placeholder="Masukkan nama Anda">
+            </div>
+            <div class="form-group">
+                <label>Pesan / Pengaduan</label>
+                <textarea class="form-control" rows="4" placeholder="Tuliskan isi pengaduan..."></textarea>
+            </div>
+            <button class="btn" style="width: 100%;">Kirim Pengaduan</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>SDN Seddur 1</h3>
+                <p>Mencetak generasi cerdas, berakhlak mulia, dan siap menghadapi masa depan.</p>
+            </div>
+            <div>
+                <h3>Tautan Cepat</h3>
+                <p><a href="#" onclick="bukaSambutan()" style="color:white; text-decoration:none;">Sambutan Kepsek</a></p>
+                <p><a href="#" onclick="bukaTenagaPendidik()" style="color:white; text-decoration:none;">Tenaga Pendidik</a></p>
+            </div>
+        </div>
+        <p>&copy; 2026 SDN Seddur 1. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript Pendukung -->
     <script>
         // Fungsi Tombol Menu Hamburger HP
         function toggleMenu() {
@@ -284,6 +475,7 @@
         }
 
         function munculInfo(tipe) {
+            hideAllSections();
             const kotak = document.getElementById('kotakInfo');
             const judul = document.getElementById('judulInfo');
             const isi = document.getElementById('isiInfo');
@@ -293,23 +485,23 @@
                 isi.innerHTML = "<b>Visi:</b><br>Mencetak Siswa Unggul Berprestasi, Berbudi Pekerti Luhur, Bertakwa dan Peduli Lingkungan.<br><br><b>Misi:</b><br>1. Melaksanakan pembelajaran efektif.<br>2. Menumbuhkan penghayatan agama.<br>3. Menerapkan manajemen peduli lingkungan.";
             } else if (tipe === 'sejarah') {
                 judul.innerText = "Sejarah Sekolah";
-                isi.innerHTML = "SDN Seddur 1 didirikan untuk memberikan akses pendidikan berkualitas di Desa Seddur.";
+                isi.innerHTML = "SDN Seddur 1 didirikan untuk memberikan akses pendidikan berkualitas bagi anak-anak di Desa Seddur dan sekitarnya.";
             } else if (tipe === 'kurikulum') {
                 judul.innerText = "Kurikulum Merdeka";
-                isi.innerHTML = "Menerapkan Kurikulum Merdeka yang fleksibel dan berfokus pada pengembangan karakter.";
+                isi.innerHTML = "Menerapkan Kurikulum Merdeka yang fleksibel dan berfokus pada materi esensial serta pengembangan karakter siswa.";
             } else if (tipe === 'karakter') {
                 judul.innerText = "Pendidikan Karakter";
-                isi.innerHTML = "Pembiasaan sholat berjamaah, doa, dan budaya 5S.";
+                isi.innerHTML = "Pembiasaan sholat berjamaah, senyum, sapa, salam, sopan, dan santun (5S) di lingkungan sekolah.";
             } else if (tipe === 'ekstra') {
                 bukaEkstra();
                 return;
             }
-            kotak.style.display = "flex";
+            kotak.style.display = "block";
+            kotak.scrollIntoView({ behavior: 'smooth' });
         }
 
         function tutupInfo() { document.getElementById('kotakInfo').style.display = "none"; }
-        function bukaModal() { document.getElementById("modalPPDB").style.display = "flex"; }
-        function tutupModal() { document.getElementById("modalPPDB").style.display = "none"; }
+        function bukaModal() { alert("Pendaftaran PPDB SDN Seddur 1 dapat langsung datang ke sekolah atau menghubungi panitia."); }
     </script>
 </body>
 </html>
