@@ -955,7 +955,7 @@
     </footer>
 
     <div id="kotakInfo" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center;">
-        <div style="background:white; padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative; border-top:10px solid #2e7d32; text-align:center;">
+        <div style="background:white; padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative; border-top:10px solid #2e7d32; text-align:center; max-height: 90vh; overflow-y: auto;">
             <h2 id="judulInfo" style="color:#2e7d32; margin-top:0;">Judul</h2>
             <div id="isiInfo" style="font-size:16px; line-height:1.6; color:#333; margin: 20px 0; text-align: left;"></div>
             <button onclick="tutupInfo()" style="background:#fbc02d; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">Tutup</button>
@@ -1038,17 +1038,18 @@
                 isi.innerHTML = "<b>Visi:</b><br>Mencetak Siswa Unggul Berprestasi, Berbudi Pekerti Luhur, Bertakwa dan Peduli Lingkungan.<br><br><b>Misi:</b><br>1. Melaksanakan pembelajaran yang efektif, sehingga siswa dapat berkembang secara optimal sesuai dengan potensi yang dimiliki.<br>2. Menumbuhkan penghayatan terhadap ajaran agama dan budaya bangsa, sehingga menjadi sumber kearifan dalam bertindak.<br>3. Menerapkan manajemen partisipatif dan peduli lingkungan dengan melibatkan seluruh warga sekolah.";
             } else if (tipe === 'sejarah') {
                 judul.innerText = "Sejarah Sekolah";
-                isi.innerHTML = "<b>Sejarah Singkat SDN Seddur 1:</b><br>SDN Seddur 1 didirikan dengan misi utama untuk memberikan akses pendidikan dasar yang merata, merangkul, dan berkualitas bagi anak-anak di Desa Seddur dan sekitarnya.
-
-Berlokasi di Dusun Gunung Penang, Kecamatan Pakong, Kabupaten Pamekasan, sekolah ini telah lama menjadi bagian penting dalam pembangunan fondasi pendidikan di tengah masyarakat lokal. Sejak awal berdirinya hingga saat ini, SDN Seddur 1 terus berkomitmen untuk:
-
-Meningkatkan Sarana & Prasarana: Mengembangkan fasilitas belajar yang nyaman dan mendukung proses kegiatan belajar mengajar yang efektif.
-
-Mutu Pengajaran Profesional: Didukung oleh tenaga pendidik dan kependidikan yang berdedikasi tinggi dalam mendidik serta membimbing peserta didik.
-
-Pendidikan Karakter & Prestasi: Mendorong siswa agar tidak hanya cerdas secara akademis, tetapi juga memiliki akhlak mulia, berbudi pekerti luhur, bertakwa, serta peduli terhadap lingkungan sekitar sesuai dengan visi sekolah.
-
-Dengan semangat kebersamaan dan inovasi yang berkelanjutan, SDN Seddur 1 terus bertekad untuk mencetak generasi penerus bangsa yang unggul, berprestasi, dan siap menghadapi tantangan masa depan..";
+                // Menambahkan elemen gambar di bagian atas dan keterangan teks di bawahnya
+                isi.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <img src="galeri/skol.jpg" alt="Gedung Sekolah SDN Seddur 1" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; border: 2px solid #eee;">
+                    </div>
+                    <div><b>Sejarah Singkat SDN Seddur 1:</b><br>
+                    SDN Seddur 1 didirikan dengan misi utama untuk memberikan akses pendidikan dasar yang merata, merangkul, dan berkualitas bagi anak-anak di Desa Seddur dan sekitarnya. Berlokasi di Dusun Gunung Penang, Kecamatan Pakong, Kabupaten Pamekasan, sekolah ini telah lama menjadi bagian penting dalam pembangunan fondasi pendidikan di tengah masyarakat lokal. Sejak awal berdirinya hingga saat ini, SDN Seddur 1 terus berkomitmen untuk:<br><br>
+                    • <b>Meningkatkan Sarana & Prasarana:</b> Mengembangkan fasilitas belajar yang nyaman dan mendukung proses kegiatan belajar mengajar yang efektif.<br>
+                    • <b>Mutu Pengajaran Profesional:</b> Didukung oleh tenaga pendidik dan kependidikan yang berdedikasi tinggi dalam mendidik serta membimbing peserta didik.<br>
+                    • <b>Pendidikan Karakter & Prestasi:</b> Mendorong siswa agar tidak hanya cerdas secara akademis, tetapi juga memiliki akhlak mulia, berbudi pekerti luhur, bertakwa, serta peduli terhadap lingkungan sekitar sesuai dengan visi sekolah.<br><br>
+                    Dengan semangat kebersamaan dan inovasi yang berkelanjutan, SDN Seddur 1 terus bertekad untuk mencetak generasi penerus bangsa yang unggul, berprestasi, dan siap menghadapi tantangan masa depan.</div>
+                `;
             } else if (tipe === 'kurikulum') {
                 judul.innerText = "Kurikulum Merdeka";
                 isi.innerHTML = "Kami menerapkan Kurikulum Merdeka yang memberikan keleluasaan bagi guru untuk menciptakan pembelajaran berkualitas yang sesuai dengan kebutuhan dan lingkungan belajar siswa.";
